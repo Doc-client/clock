@@ -3,14 +3,14 @@ from core.new import plugin
 clockplugin = plugin.plugin("clock")
 
 
-@clockplugin.command("c", instance=True)
-def clock(instance):
+@clockplugin.command("c")
+def clock(event):
     """live time clock"""
     import time, datetime
     try:
         while True:
-            instance.docprint("\r" + str(datetime.datetime.now().strftime("%H:%M:%S")), end="")
+            event.print("\r" + str(datetime.datetime.now().strftime("%H:%M:%S")), end="")
             time.sleep(1)
 
     except:
-        instance.docprint("", end="\n")
+        event.print("", end="\n")
